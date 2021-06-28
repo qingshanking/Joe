@@ -1,4 +1,80 @@
 <footer class="joe_footer">
+    <?php if($this->is('index')): ?>
+    <style>
+        @media (min-width: 576px) {
+            .index_link_item {
+                max-width: 540px
+            }
+        }
+
+        @media (min-width: 768px) {
+            .index_link_item {
+                max-width: 720px
+            }
+        }
+
+        @media (min-width: 992px) {
+            .index_link_item {
+                max-width: 960px
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .index_link_item {
+                max-width: 1140px
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .index_link_item {
+                max-width: 1320px
+            }
+        }
+
+        .index_link_item {
+            margin: 30px auto 0;
+            padding: 0 15px;
+            border-radius: 2px;
+        }
+
+        .index_link_item a {
+            margin: 0 6px;
+            color: var(--minor);
+        }
+
+        .index_link_item a:hover {
+            color: var(--theme);
+        }
+    </style>
+    <div class="index_link_item">
+        友情链接：
+        <?php
+        $friends = [];
+        $friends_text = $this->options->JFriends;
+        if ($friends_text) {
+            $friends_arr = explode("\r\n", $friends_text);
+            if (count($friends_arr) > 0) {
+                for ($i = 0; $i < count($friends_arr); $i++) {
+                    $name = explode("||", $friends_arr[$i])[0];
+                    $url = explode("||", $friends_arr[$i])[1];
+                    $avatar = explode("||", $friends_arr[$i])[2];
+                    $desc = explode("||", $friends_arr[$i])[3];
+                    $friends[] = array("name" => trim($name), "url" => trim($url), "avatar" => trim($avatar), "desc" => trim($desc));
+                };
+            }
+        }
+        ?>
+        <?php if (sizeof($friends) > 0) : ?>
+        <?php foreach ($friends as $item) : ?>
+        <a class="contain" href="<?php echo $item['url']; ?>" target="_blank" rel="noopener noreferrer"><span class="title"><?php echo $item['name']; ?></span>
+        </a>
+        <?php endforeach; ?>
+        <?php endif; ?>
+        <a class="contain" href="https://blog.yanqingshan.com/links.html" target="_blank" rel="noopener noreferrer">
+            <span class="title"> 内页友链&gt; </span>
+        </a>
+    </div>
+    <?php endif; ?>
     <div class="joe_container">
         <div class="item">
             <?php $this->options->JFooter_Left() ?>
