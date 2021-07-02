@@ -50,7 +50,7 @@
         友情链接：
         <?php
         $friends = [];
-        $friends_text = $this->options->JFriends;
+        $friends_text = $this->options->JFriendsIndex;
         if ($friends_text) {
             $friends_arr = explode("\r\n", $friends_text);
             if (count($friends_arr) > 0) {
@@ -71,7 +71,7 @@
         <?php endforeach; ?>
         <?php endif; ?>
         <a class="contain" href="https://blog.yanqingshan.com/links.html" target="_blank" rel="noopener noreferrer">
-            <span class="title"> 内页友链&gt; </span>
+            <span class="title"> 更多友链&gt; </span>
         </a>
     </div>
     <?php endif; ?>
