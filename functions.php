@@ -778,7 +778,40 @@ function themeConfig($form)
     $JFriends->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriends);
 
+    $Statistical_Status = new Typecho_Widget_Helper_Form_Element_Select(
+            'Statistical_Status',
+            array('off' => '关闭（默认）', 'on' => '开启'),
+            'off',
+            '是否开启51LA统计展示',
+            '介绍：开启后会在统计页面展示51LA统计展示 <br />
+             其他：用于展示51LA统计，配合配置使用'
+    );
+    $Statistical_Status->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($Statistical_Status->multiMode());
 
+    $Statistical_AccessKey = new Typecho_Widget_Helper_Form_Element_Text(
+            'Statistical_AccessKey',
+            NULL,
+            NULL,
+            '51LA统计AccessKey',
+            '介绍：请填写51LA统计AccessKey，用于查询51站点统计概况数据<br />
+             获取地址：https://v6.51.la/user/application/openapi <br />
+             '
+        );
+    $Statistical_AccessKey->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($Statistical_AccessKey);
+
+    $Statistical_MaskId = new Typecho_Widget_Helper_Form_Element_Text(
+                'Statistical_MaskId',
+                NULL,
+                NULL,
+                '51LA统计动态掩码 ID',
+                '介绍：请填写51LA动态掩码 ID ,在参数设置-统计代码中可找到<br />
+                 获取地址：https://v6.51.la/user/application <br />
+                 '
+    );
+    $Statistical_MaskId->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($Statistical_MaskId);
 
     $JMaccmsAPI = new Typecho_Widget_Helper_Form_Element_Text(
         'JMaccmsAPI',
